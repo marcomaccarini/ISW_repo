@@ -1,0 +1,65 @@
+@prefix :        <http://example.org/lex/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl:  <http://www.w3.org/2008/05/skos-xl#> .
+@prefix lexi:    <http://lexinfo.net/ontology/3.0/lexinfo#> .
+@prefix gold:    <http://purl.org/linguistics/gold/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix mmoon:   <http://mmoon.org/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+```turtle
+:apple-en  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apple" ;
+    skosxl:prefLabel  "apple"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl .
+:apple-en-pl  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apples" ;
+    skosxl:prefLabel  "apples"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl-pl .
+:apple-en-pl-pl  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apples" ;
+    skosxl:prefLabel  "apples"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl-pl-pl .
+:apple-en-pl-pl-pl  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apples" ;
+    skosxl:prefLabel  "apples"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl-pl-pl-pl .
+:apple-en-pl-pl-pl-pl  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apples" ;
+    skosxl:prefLabel  "apples"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl-pl-pl-pl-pl .
+:apple-en-pl-pl-pl-pl-pl  a  skosxl:LexicalEntry ;
+    skosxl:surfaceForm  "apples" ;
+    skosxl:prefLabel  "apples"@en ;
+    lexi:partOfSpeech  lexi:Noun ;
+    ontolex:form  :apple-en-pl-pl-pl-pl-pl-pl .
+:apple-en-pl-pl-pl-pl-pl-pl  a
+
+
+:ness-en <http://example.org/lex/ness-en>.
+:ness-en a skos:Concept.
+:ness-en skosxl:surfaceForm "ness"@en.
+:ness-en skosxl:prefLabel "ness"@en.
+:ness-en lexi:partOfSpeech lexi:Noun.
+:ness-en ontolex:Form :ness-en-form.
+:ness-en-form ontolex:form :ness-en-surface.
+:ness-en-surface ontolex:surfaceForm "ness"@en.
+:ness-en-form ontolex:formOf :ness-en.
+:ness-en skos:broader :abstractness-en.
+:abstractness-en a skos:Concept.
+:abstractness-en skosxl:surfaceForm "abstractness"@en.
+:abstractness-en skosxl:prefLabel "abstractness"@en.
+:abstractness-en lexi:partOfSpeech lexi:Noun.
+:abstractness-en ontolex:Form :abstractness-en-form.
+:abstractness-en-form ontolex:form :abstractness-en.
+:abstractness-en skos:broader :abstractness-en.
+:ness-en skos:closeMatch :abstractness-en.
+:ness-en skos:member :ness-en-collection.
+:ness-en-collection a skos:Collection.
+:ness-en-collection sk
+
