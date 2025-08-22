@@ -18,8 +18,8 @@ import seaborn as sns
 # ────────────────────────────────────────────────
 # Configuration
 # ────────────────────────────────────────────────
-RESULTS_DIR = Path("./results_multimodel")
-OUT_DIR = Path("./analysis_charts")
+RESULTS_DIR = Path("/home/mmaccarini/Blerina/ISW_repo/results_multimodel")
+OUT_DIR = Path("/home/mmaccarini/Blerina/ISW_repo/analysis_charts")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Metrics we want to plot

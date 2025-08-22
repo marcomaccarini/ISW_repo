@@ -24,15 +24,15 @@ The pipeline:
 
 ### 1. Clone repo
 ```bash
-git clone https://github.com/your-username/multi-llm-eval.git
-cd multi-llm-eval
+git clone git@github.com:marcomaccarini/ISW_repo.git
+cd ISW_repo
 ```
 
 ### 2. Create a virtual environment (recommended)
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate   # Linux / macOS
-.venv\Scripts\activate      # Windows
+conda create -n reasoning 
+conda activate reasoning
+conda install pip
 ```
 
 ### 3. Install dependencies
@@ -50,23 +50,17 @@ pip install   transformers   sentence-transformers   bitsandbytes   accelerate  
 
 ## Usage
 
-### Step 1: Prepare input CSV
-The input file must have at least two columns:
-- `question` → e.g. `Who wrote The Old Man and the Sea?`
-- `answer`   → e.g. `Ernest Hemingway`
 
-Your file (`book_writers_QA.csv`) also includes useful metadata (`pattern_id`, `predicate`, `sup`, `card_class`, `pr_quartile`) which the script uses for additional breakdowns.
-
-### Step 2: Configure `eval_multimodel.py`
+### Step 1: Configure `eval_multimodel.py`
 Edit the variables in `main()`:
 - `INPUT_CSV = Path("./book_writers_QA.csv")`
 - `OUTDIR = Path("./results_multimodel")`
 - `HF_TOKEN = "your_huggingface_token_here"` (or set env var `HF_TOKEN`)
 
 Check the `MODELS` dictionary for model IDs you have access to:
-- **Llama**: e.g. `meta-llama/Llama-3.2-1B-Instruct`, `Llama-3.1-8B-Instruct`, `Llama-3.3-70B-Instruct`  
-- **Gemma**: `google/gemma-2-2b-it`, `gemma-2-9b-it`, `gemma-2-27b-it`  
-- **DeepSeek**: `deepseek-ai/deepseek-llm-1.3b-instruct`, `deepseek-llm-7b-instruct`, `deepseek-llm-67b-instruct`  
+- **Llama**: e.g. `meta-llama/Llama-3.2-1B-Instruct`, `Llama-3.1-8B-Instruct`,  (removed `Llama-3.3-70B-Instruct`)
+- **Gemma**: `google/gemma-2-2b-it`, `gemma-2-9b-it`, (removed `gemma-2-27b-it`)
+- **DeepSeek**: `deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B`, `DeepSeek-R1-0528-Qwen3-8B`
 
 ### Step 3: Run evaluation
 ```bash
@@ -96,26 +90,3 @@ This creates:
   - `scatter_bleu_vs_bert.png` → correlation between BLEU and BERT cosine  
 
 ---
-
-## Notes
-
-- Large models (~70B) require GPUs with high VRAM. The script uses **8-bit quantization** (`bitsandbytes`) with CPU offload to reduce memory needs.  
-- For smaller models or CPU-only runs, set `USE_8BIT = False` in `eval_multimodel.py`.  
-- Hugging Face Hub authentication is required to download gated models (Meta LLaMA, Gemma). Generate a token at [Hugging Face settings](https://huggingface.co/settings/tokens).
-
----
-
-## Project Structure
-
-```
-├── book_writers_QA.csv        # Input data (your QA dataset)
-├── eval_multimodel.py         # Main evaluation script
-├── analyze_results.py         # Analysis & chart generation
-├── results_multimodel/        # Output CSVs & Parquet files
-└── analysis_charts/           # Plots saved by analyze_results.py
-```
-
----
-
-## License
-MIT (or any license you choose)
